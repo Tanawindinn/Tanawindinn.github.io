@@ -30,7 +30,102 @@
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=XBvdu7"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=XBvdu7" type="text/css">
 
   
-  
+   <style>
+html, body {
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+  width: 100%;
+  margin: 0;
+}
+
+.gallery-scroll {
+  padding: 40px 0;
+  background-color: #f8f9fa;
+  overflow: visible !important;
+  position: relative;
+  z-index: 1;
+}
+
+.container-fluid {
+  max-width: 100% !important;
+  overflow: visible !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.scroll-zone {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  min-width: max-content;
+  box-sizing: border-box;
+  overflow: visible !important;
+}
+
+.scroll-inner > div {
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hover-grow {
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: none;
+  overflow: visible !important;
+}
+
+.hover-grow:hover {
+  transform: scale(1.8);
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hover-grow img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hover-grow:hover {
+    transform: scale(1.3);
+  }
+  .scroll-zone {
+    padding: 10px;
+  }
+  .scroll-inner > div {
+    flex: 0 0 250px;
+  }
+}
+
+
+section.gallery-scroll .scroll-zone {
+  overflow-y: visible !important;
+overflox-x: auto !important;
+}
+
+section.gallery-scroll .scroll-inner {
+  overflow: visible !important; /* Prevent clipping of scaled images */
+}</style>
   
 </head>
 <body>
@@ -92,11 +187,13 @@
             <div class="col-12 col-md-12">
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-5"><strong>公司信息</strong></h5>
-                <p class="mbr-text mbr-fonts-style display-7">私营运输单一企业“BELATEKAVTO”自2008年起进入货运市场。自2016年起成为国际公路运输协会“<a href="http://bamap.org/engver/" class="text-primary">BAMAP</a>”的正式成员；自2020年起成为白俄罗斯工商会（<a href="https://www.cci.by/" class="text-primary">BelTPP</a>）的成员；自2024年起成为国际货运代理和物流协会的成员。公司专注于运输代理服务和国际货运，拥有自有运输工具。  
+                <p class="mbr-text mbr-fonts-style display-7">私营运输单一企业“BELATEKAVTO”自2008年起进入货运市场。自2016年起成为国际公路运输协会“<a href="http://bamap.org/engver/" class="text-primary">BAMAP</a>”的正式成员；自2020年起成为白俄罗斯工商会（<a href="https://www.cci.by/en/" class="text-primary">BelCCI</a>）的成员；自2024年起成为国际货运代理和物流协会的成员 （<a href="https://www.baifby.com/en/" class="text-primary">BAIF</a>）。公司专注于运输代理服务和国际货运，拥有自有运输工具。  
 <br>2016年公司荣获“年度企业家”全国竞赛“高效服务业务”类别优胜者奖。  
 <br>自2022年起公司成为多式联运服务的运营商，积极促进东西和南北运输走廊的发展为了白俄罗斯的出口商和进口商利益。公司专注于为中国、印度、巴基斯坦、土耳其、阿联酋、埃及及远距离国家提供综合服务。  
 <br>公司是圣彼得堡和新罗西斯克港口的认证承运商。  
-<br>企业的快速发展让建立了稳固的国际合作伙伴关系，扩大了运输地理范围，吸引了高素质的员工，积累了丰富的经验。在我们的活动中我们致力于不断发展和开拓运输服务市场的新领域。<br></p></blockquote>
+<br>企业的快速发展让建立了稳固的国际合作伙伴关系，扩大了运输地理范围，吸引了高素质的员工，积累了丰富的经验。在我们的活动中我们致力于不断发展和开拓运输服务市场的新领域。<br>
+自2025年以来，BELATEKAVTO一直是<a href="https://westprof.com/zh/bai-e-%e7%be%85-si-%e7%a2%bc%e9%a0%ad%e5%80%89%e5%84%b2/" class="text-info" target="_blank">WestProfLogistics LLC</a>的合作伙伴——位于明斯克附近的一个用于存储和处理空集装箱的终端仓库，以及<a href="https://www.peatpro.by/en/" class="text-info" target="_blank">PeatPro LLC</a>——在维捷布斯克地区乌沙奇区“Losinniki”矿床建设泥炭开采和加工设施的投资项目。
+</p></blockquote>
             </div>
         </div>
     </div>
@@ -157,6 +254,23 @@
     
     
     <div class="container">
+        <style>
+        .card-box {
+            min-height: 150px; /* Ensures consistent height for all card boxes */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .icon-container {
+            display: flex;
+            gap: 10px; /* Space between icons */
+            margin-top: 5px; /* Space between phone number and icons */
+        }
+        .icon-container img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
         <div class="item features-image">
             <div class="item-wrapper">
                 <div class="row align-items-center">
@@ -169,7 +283,12 @@
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Alexander Bondarenko</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>公司总经理</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 29 652 22 93<br></p><p></p><p></p><p></p>
+                            <p class="mbr-text mbr-fonts-style display-7">+375 29 652 22 93<br>
+                            <div class="icon-container">
+                                <a href="https://wa.me/+375296522293"><img src="assets/images/whatsapp.jpg" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375296522293"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375296522293"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div></p>
                             
                         </div>
                     </div>
@@ -188,7 +307,13 @@
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Igor Ruchkin</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>发展副总经理</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 29 115 54 33&nbsp;<br></p>
+                            <p class="mbr-text mbr-fonts-style display-7">+375 29 115 54 33&nbsp;<br>
+                            <div class="icon-container">
+                                <a href="https://wa.me/+375291155433"><img src="assets/images/whatsapp.jpg" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375291155433"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375291155433"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div>
+                        </p>
                             
                         </div>
                     </div>
@@ -207,7 +332,12 @@
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Marina Rusetskaya</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>运输组织副总经理</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 44 782 22 93&nbsp;<br></p>
+                            <p class="mbr-text mbr-fonts-style display-7">+375 44 782 22 93&nbsp;<br>
+                             <div class="icon-container">
+                                <a href="https://wa.me/+375447822293"><img src="assets/images/whatsapp.jpg" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375447822293"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375447822293"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div></p>
                             
                         </div>
                     </div>
@@ -225,7 +355,12 @@
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Anna Kucakova</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>外贸事务专员</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 44 712 22 93&nbsp;<br></p>
+                            <p class="mbr-text mbr-fonts-style display-7">+375 44 712 22 93&nbsp;<br>
+                            <div class="icon-container">
+                                <a href="https://wa.me/+375447122293"><img src="assets/images/whatsapp.jpg" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375447122293"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375447122293"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div></p>
                             
                         </div>
                     </div>
@@ -243,7 +378,13 @@
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Galina Dmitrieva</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>总会计师</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 29 623 22 93&nbsp;<br></p>
+                            <p class="mbr-text mbr-fonts-style display-7">+375 29 623 22 93&nbsp;<br>
+                            <div class="icon-container">
+                                <a href="https://wa.me/+375296232293"><img src="assets/images/whatsapp.png" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375296232293"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375296232293"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div>
+                        </p>
                             
                         </div>
                     </div>
@@ -251,6 +392,151 @@
             </div>
         </div>
     </div>
+</section>
+
+<section data-bs-version="5.1" class="gallery-scroll" id="gallery-scroll" style="padding: 40px 0; background-color: #f8f9fa; overflow: visible;">
+  <div class="container-fluid" style="overflow: visible;">
+    <h3 class="text-center mb-4">奖项和证书</h3>
+    <div class="scroll-zone">
+      <div class="scroll-inner">
+        <!-- Column 1 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/202500.jpg" alt="Photo 1">
+            <p>BAMAP 荣誉证书 2025</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/2025L.jpg" alt="Photo 2">
+            <p>维捷布斯克荣誉证书 2025</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/202506.jpg" alt="Photo 3">
+            <p>BAIF 会员证书 2025</p>
+          </div>
+        </div>
+        <!-- Column 2 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20241120L.jpg" alt="Photo 4">
+            <p>维捷布斯克执行委员会感谢信 2024</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/202406.jpg" alt="Photo 5">
+            <p>BAIF 会员证书 2024</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20230225.jpg" alt="Photo 6">
+            <p>“全球迷你MBA管理”课程结业证书 2023</p>
+          </div>
+        </div>
+        <!-- Column 3 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20230225S.jpg" alt="Photo 7">
+            <p>“全球迷你MBA管理”课程参与证书 2023</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/2022.jpg" alt="Photo 8">
+            <p>纪念BAMAP成立30周年的感谢</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20210130L.jpg" alt="Photo 9">
+            <p>BelCCI “出口：现代条件下工作特点”课程结业证书 2021</p>
+          </div>
+        </div>
+        <!-- Column 4 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20XX(1).jpg" alt="Photo 10">
+            <p>BelAPP “对华出口”荣誉证书</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20XX(2).jpg" alt="Photo 11">
+            <p>“帮助重病儿童”感谢信</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20XX(1)L.jpg" alt="Photo 12">
+            <p>波洛茨克区委员会感谢</p>
+          </div>
+        </div>
+        <!-- Column 5 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20XXL.jpg" alt="Photo 13">
+            <p>BelCCI “出口学校”课程结业证书</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20XX(2)L.jpg" alt="Photo 14">
+            <p>维捷布斯克区域雇主联盟会员证书</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20190925L.jpg" alt="Photo 15">
+            <p>2019年“对外经济合同：理论与实践”研讨会参与证书</p>
+          </div>
+        </div>
+        <!-- Column 6 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/2018.jpg" alt="Photo 16">
+            <p>维捷布斯克慈善协会感谢 2018</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/2018L.jpg" alt="Photo 17">
+            <p>Priorbank “2017年可靠银行客户” 2018</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20180216S.jpg" alt="Photo 18">
+            <p>“#SMM2018”强化课程参与证书 2018</p>
+          </div>
+        </div>
+        <!-- Column 7 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20180121L.jpg" alt="Photo 19">
+            <p>“损害及其确定”研讨会参与证书</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20180201L.jpg" alt="Photo 20">
+            <p>BAMAP 2018年准入证书</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20170802L.jpg" alt="Photo 21">
+            <p>2017年“国际运输中非保全货物运输的实践方面”研讨会参与证书</p>
+          </div>
+        </div>
+        <!-- Column 8 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20170115L.jpg" alt="Photo 22">
+            <p>2017年“运输与货运代理活动”研讨会参与证书</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20160701.jpg" alt="Photo 23">
+            <p>2016年BPW技术研讨会参与证书</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20160915L.png" alt="Photo 24">
+            <p>2016年“年度企业家”竞赛获奖者文凭</p>
+          </div>
+        </div>
+        <!-- Column 9 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20160302L.png" alt="Photo 25">
+            <p>维捷布斯克区域代表委员会荣誉证书 2016</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20140528.jpg" alt="Photo 26">
+            <p>FIATA “水运”培训参与证书 2014</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20140925.jpg" alt="Photo 27">
+            <p>FIATA 供应链管理高级文凭 2014</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section data-bs-version="5.1" class="footer3 cid-uBPQU5DRxr" once="footers" id="footer3-h">

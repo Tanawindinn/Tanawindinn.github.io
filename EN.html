@@ -29,7 +29,102 @@
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=Ox6nAO"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=Ox6nAO" type="text/css">
 
   
-  
+  <style>
+html, body {
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+  width: 100%;
+  margin: 0;
+}
+
+.gallery-scroll {
+  padding: 40px 0;
+  background-color: #f8f9fa;
+  overflow: visible !important;
+  position: relative;
+  z-index: 1;
+}
+
+.container-fluid {
+  max-width: 100% !important;
+  overflow: visible !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.scroll-zone {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  min-width: max-content;
+  box-sizing: border-box;
+  overflow: visible !important;
+}
+
+.scroll-inner > div {
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hover-grow {
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: none;
+  overflow: visible !important;
+}
+
+.hover-grow:hover {
+  transform: scale(1.8);
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hover-grow img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hover-grow:hover {
+    transform: scale(1.3);
+  }
+  .scroll-zone {
+    padding: 10px;
+  }
+  .scroll-inner > div {
+    flex: 0 0 250px;
+  }
+}
+
+
+section.gallery-scroll .scroll-zone {
+  overflow-y: visible !important;
+overflox-x: auto !important;
+}
+
+section.gallery-scroll .scroll-inner {
+  overflow: visible !important; /* Prevent clipping of scaled images */
+}</style>
   
 </head>
 <body>
@@ -91,12 +186,14 @@
             <div class="col-12 col-md-12">
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-5"><strong>About us</strong></h5>
-                <p class="mbr-text mbr-fonts-style display-7">Private Unitary Transport Enterprise "BELATEKAVTO" has been in the freight transportation market since 2008. Since 2016, it has been a full member of the Association of International Road Carriers "<a href="http://bamap.org/engver/" class="text-primary">BAMAP</a>" and since 2020, it has been a member of the Belarusian Chamber of Commerce and Industry (<a href="https://www.cci.by/en/" class="text-primary">CCI</a>). Since 2024, it has been an associate member of The Belarusian Association of International Forwarders. The company specializes in transport and forwarding services, as well as international freight transportation using its own fleet.
+                <p class="mbr-text mbr-fonts-style display-7">Private Unitary Transport Enterprise "BELATEKAVTO" has been in the freight transportation market since 2008. Since 2016, it has been a full member of the Association of International Road Carriers "<a href="http://bamap.org/engver/" class="text-primary">BAMAP</a>" and since 2020, it has been a member of the Belarusian Chamber of Commerce and Industry (<a href="https://www.cci.by/en/" class="text-primary">CCI</a>). Since 2024, it has been an associate member of <a href="https://www.baifby.com/en/" class="text-info" target="_blank">The Belarusian Association of International Forwarders</a>. The company specializes in transport and forwarding services, as well as international freight transportation using its own fleet.
 <br>The company was awarded the Diploma of the National Competition "Entrepreneur of the Year" in the category "Efficient Business in the Service Sector" in 2016.
 <br>Since 2022, the company has been a multimodal service operator, actively contributing to the development of the West-East and North-South transport corridors in the interests of Belarusian exporters and importers. It specializes in comprehensive services to China, India, Pakistan, Turkey, the UAE, Egypt, and other long-distance countries.
 <br>The company is an accredited carrier in the ports of St. Petersburg and Novorossiysk.
-<br>The rapid growth of the enterprise has enabled the establishment of strong international partnerships, expansion of transportation geography, attraction of highly qualified personnel, and acquisition of extensive experience. In its activities, the company strives for continuous development and exploration of new areas in the transport services market.<br></p></blockquote>
-            </div>
+<br>The rapid growth of the enterprise has enabled the establishment of strong international partnerships, expansion of transportation geography, attraction of highly qualified personnel, and acquisition of extensive experience. In its activities, the company strives for continuous development and exploration of new areas in the transport services market.<br>
+Since 2025, BELATEKAVTO has been a partner of <a href="https://westprof.com/en/sample-page/" class="text-info" target="_blank">WestProfLogistics LLC</a> - a terminal-depot for the storage and handling of empty containers near Minsk and 
+<a href=" https://www.peatpro.by/en/" class="text-info" target="_blank">PeatPro LLC</a> - an investment project for the construction of a peat extraction and processing facility at the “Losinniki” deposit in the Ushachi District of the Vitebsk Region.</p></blockquote>            
+</div>
         </div>
     </div>
 </section>
@@ -156,6 +253,23 @@
     
     
     <div class="container">
+        <style>
+        .card-box {
+            min-height: 150px; /* Ensures consistent height for all card boxes */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .icon-container {
+            display: flex;
+            gap: 10px; /* Space between icons */
+            margin-top: 5px; /* Space between phone number and icons */
+        }
+        .icon-container img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
         <div class="item features-image">
             <div class="item-wrapper">
                 <div class="row align-items-center">
@@ -168,7 +282,12 @@
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Alexander Bondarenko</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Chief Executive Officer</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 29 652 22 93<br></p><p></p><p></p><p></p>
+                            <p class="mbr-text mbr-fonts-style display-7">+375 29 652 22 93<br>
+                             <div class="icon-container">
+                                <a href="https://wa.me/+375296522293"><img src="assets/images/whatsapp.jpg" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375296522293"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375296522293"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div></p>
                             
                         </div>
                     </div>
@@ -187,7 +306,12 @@
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Igor Ruchkin</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Deputy Director of Development</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 29 115 54 33&nbsp;<br></p>
+                            <p class="mbr-text mbr-fonts-style display-7">+375 29 115 54 33&nbsp;<br>
+                            <div class="icon-container">
+                                <a href="https://wa.me/+375291155433"><img src="assets/images/whatsapp.jpg" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375291155433"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375291155433"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div></p>
                             
                         </div>
                     </div>
@@ -206,7 +330,12 @@
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Marina Ruseckaya</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Deputy Director for Transportation Organization</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 44 782 22 93&nbsp;<br></p>
+                            <p class="mbr-text mbr-fonts-style display-7">+375 44 782 22 93&nbsp;<br>
+                            <div class="icon-container">
+                                <a href="https://wa.me/+375447822293"><img src="assets/images/whatsapp.jpg" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375447822293"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375447822293"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div></p>
                             
                         </div>
                     </div>
@@ -224,7 +353,12 @@
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Anna Kucakova</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Foreign Economic Activity Manager</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 44 712 22 93&nbsp;<br></p>
+                            <p class="mbr-text mbr-fonts-style display-7">+375 44 712 22 93&nbsp;<br>
+                            <div class="icon-container">
+                                <a href="https://wa.me/+375447122293"><img src="assets/images/whatsapp.jpg" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375447122293"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375447122293"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div></p>
                             
                         </div>
                     </div>
@@ -242,7 +376,13 @@
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Galina Dmitrieva</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Chief Accountant</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 29 623 22 93&nbsp;<br></p>
+                            <p class="mbr-text mbr-fonts-style display-7">+375 29 623 22 93&nbsp;<br>
+                                                        <div class="icon-container">
+                                <a href="https://wa.me/+375296232293"><img src="assets/images/whatsapp.png" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375296232293"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375296232293"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div>
+                        </p>
                             
                         </div>
                     </div>
@@ -250,6 +390,151 @@
             </div>
         </div>
     </div>
+</section>
+
+<section data-bs-version="5.1" class="gallery-scroll" id="gallery-scroll" style="padding: 40px 0; background-color: #f8f9fa; overflow: visible;">
+  <div class="container-fluid" style="overflow: visible;">
+    <h3 class="text-center mb-4">Awards and Certificates</h3>
+    <div class="scroll-zone">
+      <div class="scroll-inner">
+        <!-- Column 1 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/202500.jpg" alt="Photo 1">
+            <p>BAMAP Certificate of Honor 2025</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/2025L.jpg" alt="Photo 2">
+            <p>Vitebsk Certificate of Honor 2025</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/202506.jpg" alt="Photo 3">
+            <p>BAIF Membership Certificate 2025</p>
+          </div>
+        </div>
+        <!-- Column 2 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20241120L.jpg" alt="Photo 4">
+            <p>Letter of Gratitude from Vitebsk Executive Committee 2024</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/202406.jpg" alt="Photo 5">
+            <p>BAIF Membership Certificate 2024</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20230225.jpg" alt="Photo 6">
+            <p>Diploma of Completion of the Course "Global Mini MBA Management" 2023</p>
+          </div>
+        </div>
+        <!-- Column 3 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20230225S.jpg" alt="Photo 7">
+            <p>Diploma of Participation in the Course "Global Mini MBA Management" 2023</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/2022.jpg" alt="Photo 8">
+            <p>Gratitude in Connection with BAMAP's 30th Anniversary</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20210130L.jpg" alt="Photo 9">
+            <p>Certificate of Completion of the Course "Export: Features of Work in Modern Conditions" BelCCI 2021</p>
+          </div>
+        </div>
+        <!-- Column 4 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20XX(1).jpg" alt="Photo 10">
+            <p>Certificate of Honor "Export Deliveries to China" BelAPP</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20XX(2).jpg" alt="Photo 11">
+            <p>Letter of Gratitude "Assistance to Seriously Ill Children"</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20XX(1)L.jpg" alt="Photo 12">
+            <p>Gratitude from Polotsk District Committee</p>
+          </div>
+        </div>
+        <!-- Column 5 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20XXL.jpg" alt="Photo 13">
+            <p>Certificate of Completion of the Course "Export School" BelCCI</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20XX(2)L.jpg" alt="Photo 14">
+            <p>Certificate of Membership in Vitebsk Regional Employers' Union</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20190925L.jpg" alt="Photo 15">
+            <p>Certificate of Participation in the Seminar "Foreign Economic Contract: Theory and Practice" 2019</p>
+          </div>
+        </div>
+        <!-- Column 6 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/2018.jpg" alt="Photo 16">
+            <p>Gratitude from Vitebsk Charitable Society 2018</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/2018L.jpg" alt="Photo 17">
+            <p>"Reliable Bank Client 2017" Priorbank 2018</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20180216S.jpg" alt="Photo 18">
+            <p>Certificate of Participation in the Intensive "#SMM2018" 2018</p>
+          </div>
+        </div>
+        <!-- Column 7 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20180121L.jpg" alt="Photo 19">
+            <p>Certificate of Participation in the Seminar "Damage and Its Determination"</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20180201L.jpg" alt="Photo 20">
+            <p>Certificate of Admission to BAMAP 2018</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20170802L.jpg" alt="Photo 21">
+            <p>Certificate of Participation in the Seminar "Practical Aspects of Non-Preserved Cargo Transportation in International Traffic" 2017</p>
+          </div>
+        </div>
+        <!-- Column 8 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20170115L.jpg" alt="Photo 22">
+            <p>Certificate of Participation in the Seminar "Transport and Freight Forwarding Activities" 2017</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20160701.jpg" alt="Photo 23">
+            <p>Certificate of Participation in BPW Technical Seminar 2016</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20160915L.png" alt="Photo 24">
+            <p>Diploma of the Winner of the "Entrepreneur of the Year" Contest 2016</p>
+          </div>
+        </div>
+        <!-- Column 9 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20160302L.png" alt="Photo 25">
+            <p>Certificate of Honor from Vitebsk Regional Council of Deputies 2016</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20140528.jpg" alt="Photo 26">
+            <p>Certificate of Participation in FIATA Training "Water Transport" 2014</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20140925.jpg" alt="Photo 27">
+            <p>FIATA Higher Diploma in Supply Chain Management 2014</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section data-bs-version="5.1" class="footer3 cid-uBPQU5DRxr" once="footers" id="footer3-h">

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html  >
 <head>
+
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Mobirise v5.9.18, mobirise.com">
@@ -24,7 +26,102 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=TsDzvP"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=TsDzvP" type="text/css">
 
-  
+  <style>
+html, body {
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+  width: 100%;
+  margin: 0;
+}
+
+.gallery-scroll {
+  padding: 40px 0;
+  background-color: #f8f9fa;
+  overflow: visible !important;
+  position: relative;
+  z-index: 1;
+}
+
+.container-fluid {
+  max-width: 100% !important;
+  overflow: visible !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.scroll-zone {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  min-width: max-content;
+  box-sizing: border-box;
+  overflow: visible !important;
+}
+
+.scroll-inner > div {
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hover-grow {
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: none;
+  overflow: visible !important;
+}
+
+.hover-grow:hover {
+  transform: scale(1.8);
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hover-grow img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hover-grow:hover {
+    transform: scale(1.3);
+  }
+  .scroll-zone {
+    padding: 10px;
+  }
+  .scroll-inner > div {
+    flex: 0 0 250px;
+  }
+}
+
+
+section.gallery-scroll .scroll-zone {
+  overflow-y: visible !important;
+overflox-x: auto !important;
+}
+
+section.gallery-scroll .scroll-inner {
+  overflow: visible !important; /* Prevent clipping of scaled images */
+}</style>
   
   
 </head>
@@ -87,8 +184,21 @@
             <div class="col-12 col-md-12">
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-5"><strong>О компании</strong></h5>
-                <p class="mbr-text mbr-fonts-style display-7">Частное транспортное унитарное предприятие «БЕЛАТЕКАВТО» на рынке грузоперевозок с 2008 года. С 2016 года является действительным членом ассоциации международных автомобильных перевозок "<a href="http://bamap.org/" class="text-info" target="_blank">БАМАП</a>", с 2020 является членом Белорусской торгово-промышленной палаты <a href="https://www.cci.by/" class="text-info" target="_blank">БелТПП</a>, с 2024 года ассоциированный член ассоциации международных экспедиторов и логистики. Компания специализируется на транспортно-экспедиционных услугах и международных грузоперевозках собственным транспортом.&nbsp;<br>Компания награждена Дипломом победителя национального конкурса "Предприниматель Года" в номинации "Эффективный бизнес в сфере услуг" в 2016 году.<br>С 2022 года компания является оператором мультимодального сервиса, активно способствует развитию транспортных коридоров Запад-Восток и Север-Юг в интересах белорусских экспортёров и импортёров. Специализируется на комплексном сервисе в направлении стран Китая, Индии, Пакистана, Турции, ОАЭ, Египта и стран дальней дуги.<br>Компания является аккредитованным перевозчиком в портах Санкт-Петербурга и Новороссийска.
-<br>Стремительный рост предприятия позволил наладить крепкие партнерские связи на международном уровне, расширить географию перевозок, привлечь высококвалифицированный персонал, приобрести огромный опыт. В своей деятельности мы стремимся к постоянному развитию и освоению новых сфер на рынке транспортных услуг.<br></p></blockquote>
+                <p class="mbr-text mbr-fonts-style display-7">Частное транспортное унитарное предприятие «БЕЛАТЕКАВТО» на рынке грузоперевозок с 2008 года. 
+                  С 2016 года является действительным членом ассоциации международных автомобильных перевозок "<a href="http://bamap.org/" class="text-info" target="_blank">БАМАП</a>", 
+                  с 2020 является членом Белорусской торгово-промышленной палаты <a href="https://www.cci.by/" class="text-info" target="_blank">БелТПП</a>, 
+                  с 2024 года ассоциированный член ассоциации международных экспедиторов и логистики <a href="https://www.baifby.com/" class="text-info" target="_blank">БАМЭ</a>. Компания специализируется на транспортно-экспедиционных услугах 
+                  и международных грузоперевозках собственным транспортом.&nbsp;<br>Компания награждена Дипломом победителя национального конкурса "Предприниматель Года" 
+                  в номинации "Эффективный бизнес в сфере услуг" в 2016 году.<br>С 2022 года компания является оператором мультимодального сервиса, активно способствует развитию 
+                  транспортных коридоров Запад-Восток и Север-Юг в интересах белорусских экспортёров и импортёров. Специализируется на комплексном сервисе в направлении стран Китая, 
+                  Индии, Пакистана, Турции, ОАЭ, Египта и стран дальней дуги.<br>Компания является аккредитованным перевозчиком в портах Санкт-Петербурга и Новороссийска.
+<br>Стремительный рост предприятия позволил наладить крепкие партнерские связи на международном 
+уровне, расширить географию перевозок, привлечь высококвалифицированный персонал, приобрести огромный опыт. 
+В своей деятельности мы стремимся к постоянному развитию и освоению новых сфер на рынке транспортных услуг.<br>
+С 2025 года БЕЛАТЕКАВТО является партнером <a href="https://westprof.com/" class="text-info" target="_blank">ООО «ВестПрофЛогистик»</a> - терминал-депо для хранения и обработки 
+порожних контейнеров под Минском и <a href=" https://www.peatpro.by/" class="text-info" target="_blank">ООО «ПитПро»</a> - инвестиционный проект строительства предприятия по добыче 
+и переработки торфа на месторождении «Лосинники» в Ушачском районе Витебской области.
+</p></blockquote>
             </div>
         </div>
     </div>
@@ -148,121 +258,311 @@
 
     
     
-    <div class="container">
-        <div class="item features-image">
-            <div class="item-wrapper">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-4">
-                        <div class="image-wrapper">
-                            <img src="assets/images/img-6728-568x550.jpg" alt="Mobirise Website Builder" data-slide-to="0" data-bs-slide-to="0">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md">
-                        <div class="card-box">
-                            <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Бондаренко Александр Александрович</strong></h5>
-                            <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Директор</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                +375 29 652 22 93<br></p>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item features-image">
-            <div class="item-wrapper">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-4">
-                        <div class="image-wrapper">
-                            <img src="assets/images/img-6727-470x507.jpg" alt="Mobirise Website Builder" data-slide-to="2" data-bs-slide-to="2">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md">
-                        <div class="card-box">
-                            <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Ручкин Игорь Валерьевич</strong></h5>
-                            <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Заместитель директора по развитию</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 29 115 54 33&nbsp;<br></p>
-                            
-                        </div>
+<div class="container">
+    <style>
+        .card-box {
+            min-height: 150px; /* Ensures consistent height for all card boxes */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .icon-container {
+            display: flex;
+            gap: 10px; /* Space between icons */
+            margin-top: 5px; /* Space between phone number and icons */
+        }
+        .icon-container img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+    <div class="item features-image">
+        <div class="item-wrapper">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-4">
+                    <div class="image-wrapper">
+                        <img src="assets/images/img-6728-568x550.jpg" alt="Mobirise Website Builder" data-slide-to="0" data-bs-slide-to="0">
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="item features-image">
-            <div class="item-wrapper">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-4">
-                        <div class="image-wrapper">
-                            <img src="assets/images/img-6625-816x816.jpg" alt="Mobirise Website Builder" data-slide-to="3" data-bs-slide-to="3">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md">
-                        <div class="card-box">
-                            <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Русецкая Марина Юрьевна</strong></h5>
-                            <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Заместитель директора по организации перевозок</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 44 782 22 93&nbsp;<br></p>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><div class="item features-image">
-            <div class="item-wrapper">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-4">
-                        <div class="image-wrapper">
-                            <img src="assets/images/1738763877779-816x816.jpg" alt="Mobirise Website Builder" data-slide-to="3" data-bs-slide-to="4">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md">
-                        <div class="card-box">
-                            <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Куцакова Анна Геннадьевна</strong></h5>
-                            <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Специалист по ВЭД</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 44 712 22 93&nbsp;<br></p>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><div class="item features-image">
-            <div class="item-wrapper">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-4">
-                        <div class="image-wrapper">
-                            <img src="assets/images/img-20250227-141509-694x694.jpg" alt="Mobirise Website Builder" data-slide-to="4" data-bs-slide-to="5">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md">
-                        <div class="card-box">
-                            <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Дмитриева Галина Викторовна</strong></h5>
-                            <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Главный бухгалтер</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 29 623 22 93&nbsp;<br></p>
-                            
-                        </div>
+                <div class="col-12 col-md">
+                    <div class="card-box">
+                        <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Бондаренко Александр Александрович</strong></h5>
+                        <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Директор</strong></h6>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            +375 29 652 22 93<br>
+                            <div class="icon-container">
+                                <a href="https://wa.me/+375296522293"><img src="assets/images/whatsapp.jpg" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375296522293"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375296522293"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="item features-image">
+        <div class="item-wrapper">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-4">
+                    <div class="image-wrapper">
+                        <img src="assets/images/img-6727-470x507.jpg" alt="Mobirise Website Builder" data-slide-to="2" data-bs-slide-to="2">
+                    </div>
+                </div>
+                <div class="col-12 col-md">
+                    <div class="card-box">
+                        <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Ручкин Игорь Валерьевич</strong></h5>
+                        <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Заместитель директора по развитию</strong></h6>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            +375 29 115 54 33<br>
+                            <div class="icon-container">
+                                <a href="https://wa.me/+375291155433"><img src="assets/images/whatsapp.jpg" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375291155433"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375291155433"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item features-image">
+        <div class="item-wrapper">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-4">
+                    <div class="image-wrapper">
+                        <img src="assets/images/img-6625-816x816.jpg" alt="Mobirise Website Builder" data-slide-to="3" data-bs-slide-to="3">
+                    </div>
+                </div>
+                <div class="col-12 col-md">
+                    <div class="card-box">
+                        <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Русецкая Марина Юрьевна</strong></h5>
+                        <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Заместитель директора по организации перевозок</strong></h6>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            +375 44 782 22 93<br>
+                            <div class="icon-container">
+                                <a href="https://wa.me/+375447822293"><img src="assets/images/whatsapp.jpg" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375447822293"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375447822293"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item features-image">
+        <div class="item-wrapper">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-4">
+                    <div class="image-wrapper">
+                        <img src="assets/images/1738763877779-816x816.jpg" alt="Mobirise Website Builder" data-slide-to="3" data-bs-slide-to="4">
+                    </div>
+                </div>
+                <div class="col-12 col-md">
+                    <div class="card-box">
+                        <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Куцакова Анна Геннадьевна</strong></h5>
+                        <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Специалист по ВЭД</strong></h6>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            +375 44 712 22 93<br>
+                            <div class="icon-container">
+                                <a href="https://wa.me/+375447122293"><img src="assets/images/whatsapp.jpg" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375447122293"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375447122293"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item features-image">
+        <div class="item-wrapper">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-4">
+                    <div class="image-wrapper">
+                        <img src="assets/images/img-20250227-141509-694x694.jpg" alt="Mobirise Website Builder" data-slide-to="4" data-bs-slide-to="5">
+                    </div>
+                </div>
+                <div class="col-12 col-md">
+                    <div class="card-box">
+                        <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Дмитриева Галина Викторовна</strong></h5>
+                        <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>Главный бухгалтер</strong></h6>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            +375 29 623 22 93<br>
+                            <div class="icon-container">
+                                <a href="https://wa.me/+375296232293"><img src="assets/images/whatsapp.png" alt="WhatsApp"></a>
+                                <a href="viber://chat?number=%2B375296232293"><img src="assets/images/viber.png" alt="Viber"></a>
+                                <a href="https://t.me/+375296232293"><img src="assets/images/telegram.png" alt="Telegram"></a>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section data-bs-version="5.1" class="gallery-scroll" id="gallery-scroll" style="padding: 40px 0; background-color: #f8f9fa; overflow: visible;">
+  <div class="container-fluid" style="overflow: visible;">
+    <h3 class="text-center mb-4">Награды и Сертификаты</h3>
+    <div class="scroll-zone">
+      <div class="scroll-inner">
+        <!-- Column 1 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/202500.jpg" alt="Фото 1">
+            <p>Почетная Грамота БАМАП 2025</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/2025L.jpg" alt="Фото 2">
+            <p>Почетная Грамота Витебск 2025</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/202506.jpg" alt="Фото 3">
+            <p>Сертификат Членства БАМЭ 2025</p>
+          </div>
+        </div>
+        <!-- Column 2 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20241120L.jpg" alt="Фото 4">
+            <p>Благодарственное Письмо Витебский Исполнительный Комитет 2024</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/202406.jpg" alt="Фото 5">
+            <p>Сертификат Членства БАМЭ 2024</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20230225.jpg" alt="Фото 6">
+            <p>Диплом Прохождения Курса "Global Mini MBA Management" 2023</p>
+          </div>
+        </div>
+        <!-- Column 3 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20230225S.jpg" alt="Фото 7">
+            <p>Диплом Участия в Курсе "Global Mini MBA Management" 2023</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/2022.jpg" alt="Фото 8">
+            <p>Благодарности в Связи с 30-тилетием БАМАП</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20210130L.jpg" alt="Фото 9">
+            <p>Сертификат Окончания Курса "Экспорт: особенности работы в современных услових" БелТПП 2021</p>
+          </div>
+        </div>
+        <!-- Column 4 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20XX(1).jpg" alt="Фото 10">
+            <p>Почетная Грамота "Экспортные Поставки в КНР" БелАПП</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20XX(2).jpg" alt="Фото 11">
+            <p>Благодарственное письмо "Помощь тяжелобольным детям"</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20XX(1)L.jpg" alt="Фото 12">
+            <p>Благодарность Полоцкий Районный Комитет</p>
+          </div>
+        </div>
+        <!-- Column 5 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20XXL.jpg" alt="Фото 13">
+            <p>Сертификат Окончания Курса "Школа Экспорта" БелТПП</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20XX(2)L.jpg" alt="Фото 14">
+            <p>Свидетельство Членства Витебского Областного Союза Нанимателей</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20190925L.jpg" alt="Фото 15">
+            <p>Сертификат Участия в Семинаре "Внешнеэкономический Договор: Теория и Практика" 2019</p>
+          </div>
+        </div>
+        <!-- Column 6 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/2018.jpg" alt="Фото 16">
+            <p>Благодарность Витебское Благотворительное Общество 2018</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/2018L.jpg" alt="Фото 17">
+            <p>"Надежный Клиент Банка 2017" Приорбанк 2018</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20180216S.jpg" alt="Фото 18">
+            <p>Сертификат Участия в Интенсиве "#SMM2018" 2018</p>
+          </div>
+        </div>
+        <!-- Column 7 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20180121L.jpg" alt="Фото 19">
+            <p>Сертификат Участия в Семинаре "Ущерб и Его Определение"</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20180201L.jpg" alt="Фото 20">
+            <p>Свидетельство о Принятии в БАМАП 2018</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20170802L.jpg" alt="Фото 21">
+            <p>Сертификат Участия в Семинаре "Практические Аспекты Несохранной Перевозки Груза в Международном Сообщении" 2017</p>
+          </div>
+        </div>
+        <!-- Column 8 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20170115L.jpg" alt="Фото 22">
+            <p>Сертификат Участия в Семинаре "Транспортно-Экспедиционная Деятельность" 2017</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20160701.jpg" alt="Фото 23">
+            <p>Сертификат Участия в Техническом Семинаре BPW 2016</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20160915L.png" alt="Фото 24">
+            <p>Диплом Победителя Конкурса "Предприниматель Года" 2016</p>
+          </div>
+        </div>
+        <!-- Column 9 -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/20160302L.png" alt="Фото 25">
+            <p>Почётная Грамота Витебский Областной Совет Депутатов 2016</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20140528.jpg" alt="Фото 26">
+            <p>Сертификат Участия в Тренинге FIATA "Водный Транспорт" 2014</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/20140925.jpg" alt="Фото 27">
+            <p>Высший диплом по управлению цепочками поставок FIATA 2014</p>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
 </section>
-
 <section data-bs-version="5.1" class="footer3 cid-uBPQU5DRxr" once="footers" id="footer3-h">
-
-    
-
-    
 
     <div class="container">
         <div class="media-container-row align-center mbr-white">
-            
-            
             <div class="row row-copirayt">
                 <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">Почта: Belatekavto@mail.ru</p>
             </div>
         </div>
     </div>
-</section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/parallax/jarallax.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
+</section>
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  
+<script src="assets/parallax/jarallax.js"></script>  
+<script src="assets/smoothscroll/smooth-scroll.js"></script> 
+ <script src="assets/ytplayer/index.js"></script> 
+ <script src="assets/dropdown/js/navbar-dropdown.js"></script> 
+<script src="assets/theme/js/script.js"></script>  
   
 </body>
 </html>
