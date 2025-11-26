@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  >
+<html>
 <head>
   <!-- Site made with Mobirise Website Builder v5.9.18, https://mobirise.com -->
   <meta charset="UTF-8">
@@ -125,7 +125,178 @@ overflox-x: auto !important;
 
 section.gallery-scroll .scroll-inner {
   overflow: visible !important; /* Prevent clipping of scaled images */
-}</style>
+}
+
+/* --- PDF Viewer Styles --- */
+#pdf-viewer-section {
+    background-color: #eef2f5; /* Slightly darker background for contrast */
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    user-select: none;
+    overflow: hidden; 
+}
+
+.container-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1400px; 
+    margin: 0 auto;
+    /* DYNAMIC HEIGHT: Uses 85% of screen height, but at least 600px */
+    height: 85vh; 
+    min-height: 600px;
+    max-height: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; /* Adds 3D depth */
+}
+
+/* The individual card wrappers */
+.pdf-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: white;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    border-radius: 2px;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: center center;
+    overflow: hidden;
+    opacity: 0;
+    z-index: 0;
+    /* Default hidden state */
+    transform: translate(-50%, -50%) scale(0.4);
+    pointer-events: none;
+}
+
+.pdf-card canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* --- STATES --- */
+
+/* Main Center Card - Now much larger */
+.pdf-card.is-active {
+    opacity: 1;
+    z-index: 20;
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+    pointer-events: auto; 
+}
+
+/* Left (Previous) Card */
+.pdf-card.is-prev {
+    opacity: 0.5;
+    z-index: 10;
+    /* Move to left edge, scale down significantly */
+    transform: translate(-140%, -50%) scale(0.6) rotateY(15deg); 
+    filter: blur(1px) grayscale(30%);
+}
+
+/* Right (Next) Card */
+.pdf-card.is-next {
+    opacity: 0.5;
+    z-index: 10;
+    /* Move to right edge, scale down significantly */
+    transform: translate(40%, -50%) scale(0.6) rotateY(-15deg);
+    filter: blur(1px) grayscale(30%);
+}
+
+/* Text Layer for Selection */
+.textLayer {
+    opacity: 1;
+    mix-blend-mode: multiply;
+    line-height: 1.0;
+    pointer-events: none;
+}
+.pdf-card.is-active .textLayer {
+    pointer-events: auto;
+    cursor: text;
+    user-select: text;
+}
+
+/* Navigation Buttons - Moved further out */
+.pdf-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.pdf-nav-btn:hover {
+    background-color: #6592e6;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 25px rgba(101, 146, 230, 0.5);
+}
+
+.btn-prev { left: 30px; }
+.btn-next { right: 30px; }
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .pdf-card.is-prev { transform: translate(-120%, -50%) scale(0.5); }
+    .pdf-card.is-next { transform: translate(20%, -50%) scale(0.5); }
+}
+
+@media (max-width: 768px) {
+    .container-carousel { height: 60vh; min-height: 400px; }
+    .pdf-nav-btn { width: 45px; height: 45px; font-size: 1.2rem; }
+    .btn-prev { left: 10px; }
+    .btn-next { right: 10px; }
+    /* On mobile, hide side cards completely to save space */
+    .pdf-card.is-prev, .pdf-card.is-next { opacity: 0; pointer-events: none; } 
+}
+
+.page-info {
+    margin-top: 15px;
+    font-family: 'Jost', sans-serif;
+    color: #777;
+    font-size: 1.1rem;
+}
+
+/* --- MAGNIFYING GLASS STYLES ADDED HERE --- */
+.pdf-card.is-active {
+    cursor: crosshair; /* Indicate a zoomable area */
+}
+
+.magnifier-lens {
+    position: absolute;
+    border: 3px solid #6592e6;
+    border-radius: 50%;
+    cursor: none; /* Hide the mouse cursor over the lens */
+    width: 400px; /* UPDATED: Twice larger */
+    height: 400px; /* UPDATED: Twice larger */
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    pointer-events: none; /* Allows mouse events to pass through to the parent slot */
+    z-index: 101; 
+}
+
+.magnifier-lens #canvas-lens {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The canvas inside the lens will be sized and positioned by JS */
+}
+/* --- END MAGNIFYING GLASS STYLES --- */
+</style>
   
 </head>
 <body>
@@ -187,12 +358,12 @@ section.gallery-scroll .scroll-inner {
             <div class="col-12 col-md-12">
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-5"><strong>公司信息</strong></h5>
-                <p class="mbr-text mbr-fonts-style display-7">私营运输单一企业“BELATEKAVTO”自2008年起进入货运市场。自2016年起成为国际公路运输协会“<a href="http://bamap.org/engver/" class="text-primary">BAMAP</a>”的正式成员；自2020年起成为白俄罗斯工商会（<a href="https://www.cci.by/en/" class="text-primary">BelCCI</a>）的成员；自2024年起成为国际货运代理和物流协会的成员 （<a href="https://www.baifby.com/en/" class="text-primary">BAIF</a>）。公司专注于运输代理服务和国际货运，拥有自有运输工具。  
-<br>2016年公司荣获“年度企业家”全国竞赛“高效服务业务”类别优胜者奖。  
+                <p class="mbr-text mbr-fonts-style display-7">私营运输单一企业"BELATEKAVTO"自2008年起进入货运市场。自2016年起成为国际公路运输协会"<a href="http://bamap.org/engver/" class="text-primary">BAMAP</a>"的正式成员；自2020年起成为白俄罗斯工商会（<a href="https://www.cci.by/en/" class="text-primary">BelCCI</a>）的成员；自2024年起成为国际货运代理和物流协会的成员 （<a href="https://www.baifby.com/en/" class="text-primary">BAIF</a>）。公司专注于运输代理服务和国际货运，拥有自有运输工具。  
+<br>2016年公司荣获"年度企业家"全国竞赛"高效服务业务"类别优胜者奖。  
 <br>自2022年起公司成为多式联运服务的运营商，积极促进东西和南北运输走廊的发展为了白俄罗斯的出口商和进口商利益。公司专注于为中国、印度、巴基斯坦、土耳其、阿联酋、埃及及远距离国家提供综合服务。  
 <br>公司是圣彼得堡和新罗西斯克港口的认证承运商。  
 <br>企业的快速发展让建立了稳固的国际合作伙伴关系，扩大了运输地理范围，吸引了高素质的员工，积累了丰富的经验。在我们的活动中我们致力于不断发展和开拓运输服务市场的新领域。<br>
-自2025年以来，BELATEKAVTO一直是<a href="https://westprof.com/zh/bai-e-%e7%be%85-si-%e7%a2%bc%e9%a0%ad%e5%80%89%e5%84%b2/" class="text-info" target="_blank">WestProfLogistics LLC</a>的合作伙伴——位于明斯克附近的一个用于存储和处理空集装箱的终端仓库，以及<a href="https://www.peatpro.by/en/" class="text-info" target="_blank">PeatPro LLC</a>——在维捷布斯克地区乌沙奇区“Losinniki”矿床建设泥炭开采和加工设施的投资项目。
+自2025年以来，BELATEKAVTO一直是<a href="https://westprof.com/zh/bai-e-%e7%be%85-si-%e7%a2%bc%e9%a0%ad%e5%80%89%e5%84%b2/" class="text-info" target="_blank">WestProfLogistics LLC</a>的合作伙伴——位于明斯克附近的一个用于存储和处理空集装箱的终端仓库，以及<a href="https://www.peatpro.by/en/" class="text-info" target="_blank">PeatPro LLC</a>——在维捷布斯克地区乌沙奇区"Losinniki"矿床建设泥炭开采和加工设施的投资项目。
 </p></blockquote>
             </div>
         </div>
@@ -248,6 +419,293 @@ section.gallery-scroll .scroll-inner {
     </div>
 </section>
 
+<!-- PDF Viewer Section -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf_viewer.min.css">
+
+
+<section class="content5" id="pdf-viewer-section">
+    <div class="container-fluid"> <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2">
+                    <strong>DELO杂志文章</strong>
+                </h3>
+
+                <div class="container-carousel">
+                    <button class="pdf-nav-btn btn-prev" id="prev-btn">
+                        <span class="mobi-mbri mobi-mbri-arrow-prev mbr-iconfont"></span>
+                    </button>
+
+                    <div id="slot-prev" class="pdf-card is-prev">
+                        <canvas id="canvas-prev"></canvas>
+                    </div>
+
+                    <div id="slot-curr" class="pdf-card is-active">
+                        <canvas id="canvas-curr"></canvas>
+                        <div class="magnifier-lens" id="magnifier-lens">
+                            <canvas id="canvas-lens"></canvas>
+                        </div>
+                        <div id="text-layer" class="textLayer"></div>
+                    </div>
+
+                    <div id="slot-next" class="pdf-card is-next">
+                        <canvas id="canvas-next"></canvas>
+                    </div>
+
+                    <button class="pdf-nav-btn btn-next" id="next-btn">
+                        <span class="mobi-mbri mobi-mbri-arrow-next mbr-iconfont"></span>
+                    </button>
+                </div>
+
+                <div class="page-info">
+                    第 <span id="page_num">--</span> 页，共 <span id="page_count">--</span> 页
+                </div>
+                
+                <div class="mt-3">
+                    <a href="assets/images/BELATEKAVTOARTICLE.pdf" target="_blank" class="text-primary display-7">
+                        <span class="mobi-mbri mobi-mbri-download mbr-iconfont"></span>
+                        下载PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const url = 'assets/images/BELATEKAVTOARTICLE.pdf'; 
+
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+    let pdfDoc = null,
+        pageNum = 1,
+        pageRendering = false;
+
+    // References to slots
+    const slotCurr = document.getElementById('slot-curr');
+    const textLayerDiv = document.getElementById('text-layer');
+
+    const ctxs = {
+        prev: document.getElementById('canvas-prev').getContext('2d'),
+        curr: document.getElementById('canvas-curr').getContext('2d'),
+        next: document.getElementById('canvas-next').getContext('2d')
+    };
+    
+    let renderTasks = { prev: null, curr: null, next: null };
+
+    // Calculate indices with looping
+    function getIndices(centerNum, total) {
+        let prev = centerNum - 1;
+        if (prev < 1) prev = total;
+        
+        let next = centerNum + 1;
+        if (next > total) next = 1;
+        
+        return { prev, curr: centerNum, next };
+    }
+
+    function renderSingleCanvas(pageNumber, ctx, isMain) {
+        let key = isMain ? 'curr' : (ctx === ctxs.prev ? 'prev' : 'next');
+        if (renderTasks[key]) {
+            renderTasks[key].cancel();
+        }
+
+        return pdfDoc.getPage(pageNumber).then(function(page) {
+            
+            // Logic: Fit the ACTIVE page to the Container Height
+            const containerEl = document.querySelector('.container-carousel');
+            const containerHeight = containerEl.offsetHeight;
+            
+            // 1. Determine the target height for the rendered PDF
+            const targetDisplayHeight = containerHeight * 0.95; 
+            
+            // 2. Get the base (scale: 1) viewport height to find the required fit scale
+            const baseViewport = page.getViewport({scale: 1});
+            let requiredScaleToFit = targetDisplayHeight / baseViewport.height;
+
+            // 3. Apply the fit scale AND a quality multiplier (2.0) for sharp text
+            const RENDER_QUALITY_MULTIPLIER = 2.0; 
+            const finalRenderScale = requiredScaleToFit * RENDER_QUALITY_MULTIPLIER;
+            
+            // 4. Create the final viewport for rendering
+            const viewport = page.getViewport({scale: finalRenderScale});
+
+            // The canvas dimensions MUST match the viewport dimensions (in pixels)
+            const canvas = ctx.canvas;
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // 5. Use CSS to scale the large canvas back down to the target DISPLAY size
+            const canvasWidthInCSSPixels = viewport.width / RENDER_QUALITY_MULTIPLIER;
+            const canvasHeightInCSSPixels = viewport.height / RENDER_QUALITY_MULTIPLIER;
+
+            canvas.style.width = canvasWidthInCSSPixels + 'px';
+            canvas.style.height = canvasHeightInCSSPixels + 'px';
+
+
+            let renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+            };
+            
+            let task = page.render(renderContext);
+            renderTasks[key] = task;
+
+            // Handle Text Layer (Active only)
+            if (isMain) {
+                // Apply dimensions to wrappers (must match CSS pixels)
+                slotCurr.style.width = canvasWidthInCSSPixels + 'px';
+                slotCurr.style.height = canvasHeightInCSSPixels + 'px';
+                
+                document.getElementById('slot-prev').style.width = canvasWidthInCSSPixels + 'px';
+                document.getElementById('slot-prev').style.height = canvasHeightInCSSPixels + 'px';
+                document.getElementById('slot-next').style.width = canvasWidthInCSSPixels + 'px';
+                document.getElementById('slot-next').style.height = canvasHeightInCSSPixels + 'px';
+                
+                // Adjust for Magnifier Lens element
+                const lensEl = document.getElementById('magnifier-lens');
+                if (lensEl) {
+                    lensEl.style.width = '400px'; // CSS width from the style block
+                    lensEl.style.height = '400px'; // CSS height from the style block
+                }
+
+                textLayerDiv.style.width = canvasWidthInCSSPixels + 'px';
+                textLayerDiv.style.height = canvasHeightInCSSPixels + 'px';
+                
+                // For text layer alignment, we only pass the scale needed for text position (requiredScaleToFit)
+                textLayerDiv.style.setProperty('--scale-factor', requiredScaleToFit);
+                
+                task.promise.then(function() {
+                     textLayerDiv.innerHTML = "";
+                     page.getTextContent().then(function(textContent) {
+                        pdfjsLib.renderTextLayer({
+                            textContent: textContent,
+                            container: textLayerDiv,
+                            viewport: page.getViewport({scale: requiredScaleToFit}), // Use the display scale for text layer
+                            textDivs: []
+                        });
+                    });
+                }).catch(() => {});
+            }
+
+            return task.promise;
+        }).catch(err => { });
+    }
+
+    function updateCarousel(newNum) {
+        if (!pdfDoc) return;
+        pageRendering = true;
+        pageNum = newNum;
+
+        const indices = getIndices(pageNum, pdfDoc.numPages);
+
+        // We run all renders in parallel
+        Promise.all([
+            renderSingleCanvas(indices.prev, ctxs.prev, false),
+            renderSingleCanvas(indices.curr, ctxs.curr, true),
+            renderSingleCanvas(indices.next, ctxs.next, false)
+        ]).then(() => {
+            pageRendering = false;
+        });
+
+        document.getElementById('page_num').textContent = pageNum;
+    }
+
+    // --- Magnifying Glass Logic ADDED HERE ---
+    const MAGNIFY_FACTOR = 2.0; // Must match RENDER_QUALITY_MULTIPLIER
+    const LENS_SIZE = 400; // in CSS pixels (width/height of the lens circle) - UPDATED
+
+    const lensEl = document.getElementById('magnifier-lens');
+    const canvasLens = document.getElementById('canvas-lens');
+    const lensCtx = canvasLens.getContext('2d');
+    const mainCanvas = document.getElementById('canvas-curr');
+
+    // Setup lens canvas size (at 2x the display size for sharpness)
+    canvasLens.width = LENS_SIZE * MAGNIFY_FACTOR; // 400 * 2.0 = 800
+    canvasLens.height = LENS_SIZE * MAGNIFY_FACTOR; // 400 * 2.0 = 800
+
+    // Function to handle the magnifying glass effect
+    function handleMagnifier(e) {
+        // Get current mouse position relative to the slot-curr (active PDF card)
+        const pos = slotCurr.getBoundingClientRect();
+        let x = e.clientX - pos.left;
+        let y = e.clientY - pos.top;
+
+        // Boundary check: If the cursor is outside the card, hide the lens and exit.
+        if (x < 0 || y < 0 || x > pos.width || y > pos.height) {
+            lensEl.style.opacity = 0;
+            return;
+        }
+        
+        // 1. Move the lens container to the mouse position
+        const lensOffset = LENS_SIZE / 2;
+        lensEl.style.left = (x - lensOffset) + 'px';
+        lensEl.style.top = (y - lensOffset) + 'px';
+        lensEl.style.opacity = 1;
+
+        // 2. Calculate the source rectangle on the main canvas (in high-res CANVAS pixels)
+        // To maintain 2.0x magnification, the source crop area (sw, sh) must be LENS_SIZE.
+        const sourceWidth = LENS_SIZE; 
+        const sourceHeight = LENS_SIZE; 
+
+        // Source coordinates on canvas-curr (high-res canvas):
+        // sX/sY is the top-left corner of the cropped area, centered around the mouse.
+        const sX = x * MAGNIFY_FACTOR - sourceWidth / 2;
+        const sY = y * MAGNIFY_FACTOR - sourceHeight / 2;
+        
+        // Destination: fill the lens canvas
+        const destX = 0;
+        const destY = 0;
+        const destW = canvasLens.width; 
+        const destH = canvasLens.height; 
+        
+        // Draw the cropped high-res image onto the lens canvas
+        // The smaller source (400x400) is stretched to fill the larger destination (800x800), creating the zoom effect.
+        lensCtx.drawImage(
+            mainCanvas,
+            sX, sY, sourceWidth, sourceHeight, // Source Rect (crop smaller area)
+            destX, destY, destW, destH       // Destination Rect (fill lens canvas)
+        );
+    }
+    // Attach the magnifier handler to the active slot
+    slotCurr.addEventListener('mousemove', handleMagnifier);
+    slotCurr.addEventListener('mouseleave', () => {
+        lensEl.style.opacity = 0;
+    });
+    // --- End Magnifying Glass Logic ---
+
+
+    document.getElementById('prev-btn').addEventListener('click', () => {
+        let newPage = pageNum - 1;
+        if (newPage < 1) newPage = pdfDoc.numPages; 
+        updateCarousel(newPage);
+    });
+
+    document.getElementById('next-btn').addEventListener('click', () => {
+        let newPage = pageNum + 1;
+        if (newPage > pdfDoc.numPages) newPage = 1;
+        updateCarousel(newPage);
+    });
+
+    // Window resize handler to re-calculate size
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if(pdfDoc) updateCarousel(pageNum);
+        }, 200);
+    });
+
+    pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+        pdfDoc = pdfDoc_;
+        document.getElementById('page_count').textContent = pdfDoc.numPages;
+        updateCarousel(pageNum);
+    }).catch(function(error) {
+        console.error('Error loading PDF:', error);
+    });
+</script>
+
 <section data-bs-version="5.1" class="team2 cid-uC16hp2PXs" xmlns="http://www.w3.org/1999/html" id="team2-u">
     
 
@@ -283,7 +741,8 @@ section.gallery-scroll .scroll-inner {
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Alexander Bondarenko</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>公司总经理</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 29 652 22 93<br>
+                            <p class="mbr-text mbr-fonts-style display-7">
+                                <a href="tel:+375296522293" class="text-primary">+375 29 652 22 93</a><br>
                             <div class="icon-container">
                                 <a href="https://wa.me/+375296522293"><img src="assets/images/whatsapp.png" alt="WhatsApp"></a>
                                 <a href="viber://chat?number=%2B375296522293"><img src="assets/images/viber.png" alt="Viber"></a>
@@ -307,7 +766,8 @@ section.gallery-scroll .scroll-inner {
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Igor Ruchkin</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>发展副总经理</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 29 115 54 33&nbsp;<br>
+                            <p class="mbr-text mbr-fonts-style display-7">
+                                <a href="tel:+375291155433" class="text-primary">+375 29 115 54 33</a><br>
                             <div class="icon-container">
                                 <a href="https://wa.me/+375291155433"><img src="assets/images/whatsapp.png" alt="WhatsApp"></a>
                                 <a href="viber://chat?number=%2B375291155433"><img src="assets/images/viber.png" alt="Viber"></a>
@@ -332,7 +792,8 @@ section.gallery-scroll .scroll-inner {
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Marina Rusetskaya</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>运输组织副总经理</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 44 782 22 93&nbsp;<br>
+                            <p class="mbr-text mbr-fonts-style display-7">
+                                <a href="tel:+375447822293" class="text-primary">+375 44 782 22 93</a><br>
                              <div class="icon-container">
                                 <a href="https://wa.me/+375447822293"><img src="assets/images/whatsapp.png" alt="WhatsApp"></a>
                                 <a href="viber://chat?number=%2B375447822293"><img src="assets/images/viber.png" alt="Viber"></a>
@@ -355,7 +816,8 @@ section.gallery-scroll .scroll-inner {
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Anna Kucakova</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>外贸事务专员</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 44 712 22 93&nbsp;<br>
+                            <p class="mbr-text mbr-fonts-style display-7">
+                                <a href="tel:+375447122293" class="text-primary">+375 44 712 22 93</a><br>
                             <div class="icon-container">
                                 <a href="https://wa.me/+375447122293"><img src="assets/images/whatsapp.png" alt="WhatsApp"></a>
                                 <a href="viber://chat?number=%2B375447122293"><img src="assets/images/viber.png" alt="Viber"></a>
@@ -378,7 +840,8 @@ section.gallery-scroll .scroll-inner {
                         <div class="card-box">
                             <h5 class="card-title mbr-fonts-style m-0 mb-3 display-5"><strong>Galina Dmitrieva</strong></h5>
                             <h6 class="card-subtitle mbr-fonts-style mb-3 display-4"><strong>总会计师</strong></h6>
-                            <p class="mbr-text mbr-fonts-style display-7">+375 29 623 22 93&nbsp;<br>
+                            <p class="mbr-text mbr-fonts-style display-7">
+                                <a href="tel:+375296232293" class="text-primary">+375 29 623 22 93</a><br>
                             <div class="icon-container">
                                 <a href="https://wa.me/+375296232293"><img src="assets/images/whatsapp.png" alt="WhatsApp"></a>
                                 <a href="viber://chat?number=%2B375296232293"><img src="assets/images/viber.png" alt="Viber"></a>
@@ -399,6 +862,17 @@ section.gallery-scroll .scroll-inner {
     <h3 class="text-center mb-4">奖项和证书</h3>
     <div class="scroll-zone">
       <div class="scroll-inner">
+        <!-- New certificates added -->
+        <div>
+          <div class="hover-grow">
+            <img src="assets/images/belweb.jpg" alt="Photo 28">
+            <p>BELWEB 银行 2025 致谢</p>
+          </div>
+          <div class="hover-grow">
+            <img src="assets/images/RuchkinCertificate.jpg" alt="Photo 29">
+            <p>港口管理考试证书</p>
+          </div>
+        </div>
         <!-- Column 1 -->
         <div>
           <div class="hover-grow">
@@ -426,14 +900,14 @@ section.gallery-scroll .scroll-inner {
           </div>
           <div class="hover-grow">
             <img src="assets/images/20230225.jpg" alt="Photo 6">
-            <p>“全球迷你MBA管理”课程结业证书 2023</p>
+            <p>"全球迷你MBA管理"课程结业证书 2023</p>
           </div>
         </div>
         <!-- Column 3 -->
         <div>
           <div class="hover-grow">
             <img src="assets/images/20230225S.jpg" alt="Photo 7">
-            <p>“全球迷你MBA管理”课程参与证书 2023</p>
+            <p>"全球迷你MBA管理"课程参与证书 2023</p>
           </div>
           <div class="hover-grow">
             <img src="assets/images/2022.jpg" alt="Photo 8">
@@ -441,18 +915,18 @@ section.gallery-scroll .scroll-inner {
           </div>
           <div class="hover-grow">
             <img src="assets/images/20210130L.jpg" alt="Photo 9">
-            <p>BelCCI “出口：现代条件下工作特点”课程结业证书 2021</p>
+            <p>BelCCI "出口：现代条件下工作特点"课程结业证书 2021</p>
           </div>
         </div>
         <!-- Column 4 -->
         <div>
           <div class="hover-grow">
             <img src="assets/images/20XX(1).jpg" alt="Photo 10">
-            <p>BelAPP “对华出口”荣誉证书</p>
+            <p>BelAPP "对华出口"荣誉证书</p>
           </div>
           <div class="hover-grow">
             <img src="assets/images/20XX(2).jpg" alt="Photo 11">
-            <p>“帮助重病儿童”感谢信</p>
+            <p>"帮助重病儿童"感谢信</p>
           </div>
           <div class="hover-grow">
             <img src="assets/images/20XX(1)L.jpg" alt="Photo 12">
@@ -463,7 +937,7 @@ section.gallery-scroll .scroll-inner {
         <div>
           <div class="hover-grow">
             <img src="assets/images/20XXL.jpg" alt="Photo 13">
-            <p>BelCCI “出口学校”课程结业证书</p>
+            <p>BelCCI "出口学校"课程结业证书</p>
           </div>
           <div class="hover-grow">
             <img src="assets/images/20XX(2)L.jpg" alt="Photo 14">
@@ -471,7 +945,7 @@ section.gallery-scroll .scroll-inner {
           </div>
           <div class="hover-grow">
             <img src="assets/images/20190925L.jpg" alt="Photo 15">
-            <p>2019年“对外经济合同：理论与实践”研讨会参与证书</p>
+            <p>2019年"对外经济合同：理论与实践"研讨会参与证书</p>
           </div>
         </div>
         <!-- Column 6 -->
@@ -482,18 +956,18 @@ section.gallery-scroll .scroll-inner {
           </div>
           <div class="hover-grow">
             <img src="assets/images/2018L.jpg" alt="Photo 17">
-            <p>Priorbank “2017年可靠银行客户” 2018</p>
+            <p>Priorbank "2017年可靠银行客户" 2018</p>
           </div>
           <div class="hover-grow">
             <img src="assets/images/20180216S.jpg" alt="Photo 18">
-            <p>“#SMM2018”强化课程参与证书 2018</p>
+            <p>"#SMM2018"强化课程参与证书 2018</p>
           </div>
         </div>
         <!-- Column 7 -->
         <div>
           <div class="hover-grow">
             <img src="assets/images/20180121L.jpg" alt="Photo 19">
-            <p>“损害及其确定”研讨会参与证书</p>
+            <p>"损害及其确定"研讨会参与证书</p>
           </div>
           <div class="hover-grow">
             <img src="assets/images/20180201L.jpg" alt="Photo 20">
@@ -501,14 +975,14 @@ section.gallery-scroll .scroll-inner {
           </div>
           <div class="hover-grow">
             <img src="assets/images/20170802L.jpg" alt="Photo 21">
-            <p>2017年“国际运输中非保全货物运输的实践方面”研讨会参与证书</p>
+            <p>2017年"国际运输中非保全货物运输的实践方面"研讨会参与证书</p>
           </div>
         </div>
         <!-- Column 8 -->
         <div>
           <div class="hover-grow">
             <img src="assets/images/20170115L.jpg" alt="Photo 22">
-            <p>2017年“运输与货运代理活动”研讨会参与证书</p>
+            <p>2017年"运输与货运代理活动"研讨会参与证书</p>
           </div>
           <div class="hover-grow">
             <img src="assets/images/20160701.jpg" alt="Photo 23">
@@ -516,7 +990,7 @@ section.gallery-scroll .scroll-inner {
           </div>
           <div class="hover-grow">
             <img src="assets/images/20160915L.png" alt="Photo 24">
-            <p>2016年“年度企业家”竞赛获奖者文凭</p>
+            <p>2016年"年度企业家"竞赛获奖者文凭</p>
           </div>
         </div>
         <!-- Column 9 -->
@@ -527,17 +1001,11 @@ section.gallery-scroll .scroll-inner {
           </div>
           <div class="hover-grow">
             <img src="assets/images/20140528.jpg" alt="Photo 26">
-            <p>FIATA “水运”培训参与证书 2014</p>
+            <p>FIATA "水运"培训参与证书 2014</p>
           </div>
           <div class="hover-grow">
             <img src="assets/images/20140925.jpg" alt="Photo 27">
             <p>FIATA 供应链管理高级文凭 2014</p>
-          </div>
-        </div>
-        <div>
-          <div class="hover-grow">
-            <img src="assets/images/belweb.jpg" alt="Photo 28">
-            <p>BELWEB 银行 2025 致谢</p>
           </div>
         </div>
       </div>
