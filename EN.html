@@ -123,12 +123,12 @@ overflox-x: auto !important;
 }
 
 section.gallery-scroll .scroll-inner {
-  overflow: visible !important; /* Prevent clipping of scaled images */
+  overflow: visible !important;
 }
 
-/* --- PDF Viewer Styles --- */
+
 #pdf-viewer-section {
-    background-color: #eef2f5; /* Slightly darker background for contrast */
+    background-color: #eef2f5;
     padding-top: 3rem;
     padding-bottom: 3rem;
     user-select: none;
@@ -140,17 +140,17 @@ section.gallery-scroll .scroll-inner {
     width: 100%;
     max-width: 1400px; 
     margin: 0 auto;
-    /* DYNAMIC HEIGHT: Uses 85% of screen height, but at least 600px */
+    
     height: 85vh; 
     min-height: 600px;
     max-height: 1000px;
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1000px; /* Adds 3D depth */
+    perspective: 1000px; 
 }
 
-/* The individual card wrappers */
+
 .pdf-card {
     position: absolute;
     top: 50%;
@@ -163,7 +163,7 @@ section.gallery-scroll .scroll-inner {
     overflow: hidden;
     opacity: 0;
     z-index: 0;
-    /* Default hidden state */
+    
     transform: translate(-50%, -50%) scale(0.4);
     pointer-events: none;
 }
@@ -174,9 +174,9 @@ section.gallery-scroll .scroll-inner {
     height: auto;
 }
 
-/* --- STATES --- */
 
-/* Main Center Card - Now much larger */
+
+
 .pdf-card.is-active {
     opacity: 1;
     z-index: 20;
@@ -185,25 +185,23 @@ section.gallery-scroll .scroll-inner {
     pointer-events: auto; 
 }
 
-/* Left (Previous) Card */
+
 .pdf-card.is-prev {
     opacity: 0.5;
     z-index: 10;
-    /* Move to left edge, scale down significantly */
     transform: translate(-140%, -50%) scale(0.6) rotateY(15deg); 
     filter: blur(1px) grayscale(30%);
 }
 
-/* Right (Next) Card */
+
 .pdf-card.is-next {
     opacity: 0.5;
     z-index: 10;
-    /* Move to right edge, scale down significantly */
     transform: translate(40%, -50%) scale(0.6) rotateY(-15deg);
     filter: blur(1px) grayscale(30%);
 }
 
-/* Text Layer for Selection */
+
 .textLayer {
     opacity: 1;
     mix-blend-mode: multiply;
@@ -216,7 +214,7 @@ section.gallery-scroll .scroll-inner {
     user-select: text;
 }
 
-/* Navigation Buttons - Moved further out */
+
 .pdf-nav-btn {
     position: absolute;
     top: 50%;
@@ -247,7 +245,7 @@ section.gallery-scroll .scroll-inner {
 .btn-prev { left: 30px; }
 .btn-next { right: 30px; }
 
-/* Responsive adjustments */
+
 @media (max-width: 1200px) {
     .pdf-card.is-prev { transform: translate(-120%, -50%) scale(0.5); }
     .pdf-card.is-next { transform: translate(20%, -50%) scale(0.5); }
@@ -258,7 +256,7 @@ section.gallery-scroll .scroll-inner {
     .pdf-nav-btn { width: 45px; height: 45px; font-size: 1.2rem; }
     .btn-prev { left: 10px; }
     .btn-next { right: 10px; }
-    /* On mobile, hide side cards completely to save space */
+    
     .pdf-card.is-prev, .pdf-card.is-next { opacity: 0; pointer-events: none; } 
 }
 
@@ -269,22 +267,22 @@ section.gallery-scroll .scroll-inner {
     font-size: 1.1rem;
 }
 
-/* --- MAGNIFYING GLASS STYLES ADDED HERE --- */
+
 .pdf-card.is-active {
-    cursor: crosshair; /* Indicate a zoomable area */
+    cursor: crosshair; 
 }
 
 .magnifier-lens {
     position: absolute;
     border: 3px solid #6592e6;
     border-radius: 50%;
-    cursor: none; /* Hide the mouse cursor over the lens */
-    width: 400px; /* UPDATED: Twice larger */
-    height: 400px; /* UPDATED: Twice larger */
+    cursor: none; 
+    width: 400px;
+    height: 400px;
     overflow: hidden;
     opacity: 0;
     transition: opacity 0.1s ease;
-    pointer-events: none; /* Allows mouse events to pass through to the parent slot */
+    pointer-events: none;
     z-index: 101; 
 }
 
@@ -292,44 +290,64 @@ section.gallery-scroll .scroll-inner {
     position: absolute;
     top: 0;
     left: 0;
-    /* The canvas inside the lens will be sized and positioned by JS */
+    
 }
-/* --- END MAGNIFYING GLASS STYLES --- */
+
 </style>
   
 </head>
 <body>
   
-  <section data-bs-version="5.1" class="menu menu2 cid-uBPxPtP4ik" once="menu" id="menu2-8">
+  <div id="header-placeholder"></div>
+
+<script>
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
     
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container-fluid">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <a href="EN.html">
-                        <img src="assets/images/belatekeng-2.svg" alt="Mobirise Website Builder" style="height: 3rem;">
-                    </a>
-                </span>
-                
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="EN.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="NewsEN.html">News</a></li>
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="index.html">RUS</a></li><li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="EN.html">ENG</a></li><li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="page2.html">CN</a></li></ul>
-                
-                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-info display-7" href="EN.html#team2-u"><span class="mobi-mbri mobi-mbri-mobile-2 mbr-iconfont mbr-iconfont-btn"></span>Contacts</a></div>
-            </div>
-        </div>
-    </nav>
-</section>
+    var currentPage = window.location.pathname.split('/').pop() || 'EN.html';
+    var pageData = {
+        'index.html': { home: 'Главная', news: 'Новости', partners: 'Партнеры', lang: 'RUS', flag: 'https://flagcdn.com/w40/ru.png', contacts: 'Контакты', homeLink: 'index.html', newsLink: 'news.html', contactsLink: 'index.html#team2-u', rusPage: 'index.html', engPage: 'EN.html', cnPage: 'page2.html', partnersLink: 'partners.html' },
+        'EN.html': { home: 'Home', news: 'News', partners: 'Partners', lang: 'ENG', flag: 'https://flagcdn.com/w40/gb.png', contacts: 'Contacts', homeLink: 'EN.html', newsLink: 'NewsEN.html', contactsLink: 'EN.html#team2-u', rusPage: 'index.html', engPage: 'EN.html', cnPage: 'page2.html', partnersLink: 'partnersEN.html' },
+        'page2.html': { home: '首页', news: '新闻', partners: '合作伙伴', lang: 'CN', flag: 'https://flagcdn.com/w40/cn.png', contacts: '联系方式', homeLink: 'page2.html', newsLink: 'NewsCN.html', contactsLink: 'page2.html#team2-u', rusPage: 'index.html', engPage: 'EN.html', cnPage: 'page2.html', partnersLink: 'partnersCN.html' },
+        'news.html': { home: 'Главная', news: 'Новости', partners: 'Партнеры', lang: 'RUS', flag: 'https://flagcdn.com/w40/ru.png', contacts: 'Контакты', homeLink: 'index.html', newsLink: 'news.html', contactsLink: 'index.html#team2-u', rusPage: 'news.html', engPage: 'NewsEN.html', cnPage: 'NewsCN.html', partnersLink: 'partners.html' },
+        'NewsEN.html': { home: 'Home', news: 'News', partners: 'Partners', lang: 'ENG', flag: 'https://flagcdn.com/w40/gb.png', contacts: 'Contacts', homeLink: 'EN.html', newsLink: 'NewsEN.html', contactsLink: 'EN.html#team2-u', rusPage: 'news.html', engPage: 'NewsEN.html', cnPage: 'NewsCN.html', partnersLink: 'partnersEN.html' },
+        'NewsCN.html': { home: '首页', news: '新闻', partners: '合作伙伴', lang: 'CN', flag: 'https://flagcdn.com/w40/cn.png', contacts: '联系方式', homeLink: 'page2.html', newsLink: 'NewsCN.html', contactsLink: 'page2.html#team2-u', rusPage: 'news.html', engPage: 'NewsEN.html', cnPage: 'NewsCN.html', partnersLink: 'partnersCN.html' },
+        'partners.html': { home: 'Главная', news: 'Новости', partners: 'Партнеры', lang: 'RUS', flag: 'https://flagcdn.com/w40/ru.png', contacts: 'Контакты', homeLink: 'index.html', newsLink: 'news.html', contactsLink: 'index.html#team2-u', rusPage: 'partners.html', engPage: 'partnersEN.html', cnPage: 'partnersCN.html', partnersLink: 'partners.html' },
+        'partnersEN.html': { home: 'Home', news: 'News', partners: 'Partners', lang: 'ENG', flag: 'https://flagcdn.com/w40/gb.png', contacts: 'Contacts', homeLink: 'EN.html', newsLink: 'NewsEN.html', contactsLink: 'EN.html#team2-u', rusPage: 'partners.html', engPage: 'partnersEN.html', cnPage: 'partnersCN.html', partnersLink: 'partnersEN.html' },
+        'partnersCN.html': { home: '首页', news: '新闻', partners: '合作伙伴', lang: 'CN', flag: 'https://flagcdn.com/w40/cn.png', contacts: '联系方式', homeLink: 'page2.html', newsLink: 'NewsCN.html', contactsLink: 'page2.html#team2-u', rusPage: 'partners.html', engPage: 'partnersEN.html', cnPage: 'partnersCN.html', partnersLink: 'partnersCN.html' },
+        '': { home: 'Home', news: 'News', partners: 'Partners', lang: 'ENG', flag: 'https://flagcdn.com/w40/gb.png', contacts: 'Contacts', homeLink: 'EN.html', newsLink: 'NewsEN.html', contactsLink: 'EN.html#team2-u', rusPage: 'index.html', engPage: 'EN.html', cnPage: 'page2.html', partnersLink: 'partnersEN.html' }
+    };
+    var data = pageData[currentPage] || pageData['EN.html'];
+    
+    var navLinks = document.getElementById('nav-links');
+    var contactsBtn = document.getElementById('contacts-btn');
+    var logoLink = document.getElementById('logo-link');
+    
+    navLinks.innerHTML = 
+        '<li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="' + data.homeLink + '">' + data.home + '</a></li>' +
+        '<li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="' + data.newsLink + '">' + data.news + '</a></li>' +
+        '<li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="' + data.partnersLink + '">' + data.partners + '</a></li>' +
+        '<li class="nav-item dropdown" id="lang-dropdown">' +
+        '<a class="nav-link link text-white text-primary display-7 dropdown-toggle" href="#" data-bs-toggle="dropdown">' +
+        '<img src="' + data.flag + '" alt="' + data.lang + '" style="height: 14px; vertical-align: text-bottom; margin-right: 3px; width: auto; object-fit: contain;"> ' + data.lang +
+        '</a>' +
+        '<ul class="dropdown-menu dropdown-menu-dark">' +
+        '<li><a class="nav-link link text-white text-primary display-7" href="' + data.rusPage + '"><img src="https://flagcdn.com/w20/ru.png" alt="RUS" style="height: 10px; vertical-align: text-bottom; margin-right: 3px; width: auto;"> RUS</a></li>' +
+        '<li><a class="nav-link link text-white text-primary display-7" href="' + data.engPage + '"><img src="https://flagcdn.com/w20/gb.png" alt="ENG" style="height: 10px; vertical-align: text-bottom; margin-right: 3px; width: auto;"> ENG</a></li>' +
+        '<li><a class="nav-link link text-white text-primary display-7" href="' + data.cnPage + '"><img src="https://flagcdn.com/w20/cn.png" alt="CN" style="height: 10px; vertical-align: text-bottom; margin-right: 3px; width: auto;"> CN</a></li>' +
+        '</ul>' +
+        '</li>';
+    
+    if (logoLink) {
+      logoLink.href = data.homeLink;
+    }
+    
+    contactsBtn.innerHTML = '<span class="mobi-mbri mobi-mbri-mobile-2 mbr-iconfont mbr-iconfont-btn"></span>' + data.contacts;
+    contactsBtn.href = data.contactsLink;
+  });
+</script>
 
 <section data-bs-version="5.1" class="header6 cid-uBPwvigQ9b mbr-fullscreen mbr-parallax-background" id="header6-7">
 
@@ -418,7 +436,7 @@ Since 2025, BELATEKAVTO has been a partner of <a href="https://westprof.com/en/s
     </div>
 </section>
 
-<!-- PDF Viewer Section -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf_viewer.min.css">
 
@@ -860,7 +878,7 @@ Since 2025, BELATEKAVTO has been a partner of <a href="https://westprof.com/en/s
     <h3 class="text-center mb-4">Awards and Certificates</h3>
     <div class="scroll-zone">
       <div class="scroll-inner">
-        <!-- New certificates added -->
+        
         <div>
           <div class="hover-grow">
             <img src="assets/images/belweb.jpg" alt="Photo 28">
@@ -871,7 +889,7 @@ Since 2025, BELATEKAVTO has been a partner of <a href="https://westprof.com/en/s
             <p>Port Management Exam Certificate</p>
           </div>
         </div>
-        <!-- Column 1 -->
+        
         <div>
           <div class="hover-grow">
             <img src="assets/images/202500.jpg" alt="Photo 1">
@@ -886,7 +904,7 @@ Since 2025, BELATEKAVTO has been a partner of <a href="https://westprof.com/en/s
             <p>BAIF Membership Certificate 2025</p>
           </div>
         </div>
-        <!-- Column 2 -->
+        
         <div>
           <div class="hover-grow">
             <img src="assets/images/20241120L.jpg" alt="Photo 4">
@@ -901,7 +919,7 @@ Since 2025, BELATEKAVTO has been a partner of <a href="https://westprof.com/en/s
             <p>Diploma of Completion of the Course "Global Mini MBA Management" 2023</p>
           </div>
         </div>
-        <!-- Column 3 -->
+        
         <div>
           <div class="hover-grow">
             <img src="assets/images/20230225S.jpg" alt="Photo 7">
@@ -916,7 +934,7 @@ Since 2025, BELATEKAVTO has been a partner of <a href="https://westprof.com/en/s
             <p>Certificate of Completion of the Course "Export: Features of Work in Modern Conditions" BelCCI 2021</p>
           </div>
         </div>
-        <!-- Column 4 -->
+        
         <div>
           <div class="hover-grow">
             <img src="assets/images/20XX(1).jpg" alt="Photo 10">
@@ -931,7 +949,7 @@ Since 2025, BELATEKAVTO has been a partner of <a href="https://westprof.com/en/s
             <p>Gratitude from Polotsk District Committee</p>
           </div>
         </div>
-        <!-- Column 5 -->
+        
         <div>
           <div class="hover-grow">
             <img src="assets/images/20XXL.jpg" alt="Photo 13">
@@ -946,7 +964,7 @@ Since 2025, BELATEKAVTO has been a partner of <a href="https://westprof.com/en/s
             <p>Certificate of Participation in the Seminar "Foreign Economic Contract: Theory and Practice" 2019</p>
           </div>
         </div>
-        <!-- Column 6 -->
+        
         <div>
           <div class="hover-grow">
             <img src="assets/images/2018.jpg" alt="Photo 16">
@@ -961,7 +979,7 @@ Since 2025, BELATEKAVTO has been a partner of <a href="https://westprof.com/en/s
             <p>Certificate of Participation in the Intensive "#SMM2018" 2018</p>
           </div>
         </div>
-        <!-- Column 7 -->
+        
         <div>
           <div class="hover-grow">
             <img src="assets/images/20180121L.jpg" alt="Photo 19">
@@ -976,7 +994,7 @@ Since 2025, BELATEKAVTO has been a partner of <a href="https://westprof.com/en/s
             <p>Certificate of Participation in the Seminar "Practical Aspects of Non-Preserved Cargo Transportation in International Traffic" 2017</p>
           </div>
         </div>
-        <!-- Column 8 -->
+        
         <div>
           <div class="hover-grow">
             <img src="assets/images/20170115L.jpg" alt="Photo 22">
@@ -991,7 +1009,7 @@ Since 2025, BELATEKAVTO has been a partner of <a href="https://westprof.com/en/s
             <p>Diploma of the Winner of the "Entrepreneur of the Year" Contest 2016</p>
           </div>
         </div>
-        <!-- Column 9 -->
+        
         <div>
           <div class="hover-grow">
             <img src="assets/images/20160302L.png" alt="Photo 25">

@@ -301,36 +301,54 @@ section.gallery-scroll .scroll-inner {
 </head>
 <body>
   
-  <section data-bs-version="5.1" class="menu menu2 cid-uBPxPtP4ik" once="menu" id="menu2-8">
+  <div id="header-placeholder"></div>
+
+<script>
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
     
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container-fluid">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <a href="page2.html#header6-7">
-                        <img src="assets/images/belatekeng-2.svg" alt="Mobirise Website Builder" style="height: 3rem;">
-                    </a>
-                </span>
-                
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="page2.html#header6-7">主页</a></li>
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="NewsCN.html">消息</a></li>
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="index.html">RUS</a></li><li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="EN.html">ENG</a></li><li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="page2.html#header6-7">CN</a></li></ul>
-                
-                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-info display-7" href="page2.html#team2-u"><span class="mobi-mbri mobi-mbri-mobile-2 mbr-iconfont mbr-iconfont-btn"></span>联系方式</a></div>
-            </div>
-        </div>
-    </nav>
-</section>
+    var currentPage = window.location.pathname.split('/').pop() || 'page2.html';
+    var pageData = {
+        'index.html': { home: 'Главная', news: 'Новости', partners: 'Партнеры', lang: 'RUS', flag: 'https://flagcdn.com/w40/ru.png', contacts: 'Контакты', homeLink: 'index.html', newsLink: 'news.html', contactsLink: 'index.html#team2-u', rusPage: 'index.html', engPage: 'EN.html', cnPage: 'page2.html', partnersLink: 'partners.html' },
+        'EN.html': { home: 'Home', news: 'News', partners: 'Partners', lang: 'ENG', flag: 'https://flagcdn.com/w40/gb.png', contacts: 'Contacts', homeLink: 'EN.html', newsLink: 'NewsEN.html', contactsLink: 'EN.html#team2-u', rusPage: 'index.html', engPage: 'EN.html', cnPage: 'page2.html', partnersLink: 'partnersEN.html' },
+        'page2.html': { home: '首页', news: '新闻', partners: '合作伙伴', lang: 'CN', flag: 'https://flagcdn.com/w40/cn.png', contacts: '联系方式', homeLink: 'page2.html', newsLink: 'NewsCN.html', contactsLink: 'page2.html#team2-u', rusPage: 'index.html', engPage: 'EN.html', cnPage: 'page2.html', partnersLink: 'partnersCN.html' },
+        'news.html': { home: 'Главная', news: 'Новости', partners: 'Партнеры', lang: 'RUS', flag: 'https://flagcdn.com/w40/ru.png', contacts: 'Контакты', homeLink: 'index.html', newsLink: 'news.html', contactsLink: 'index.html#team2-u', rusPage: 'news.html', engPage: 'NewsEN.html', cnPage: 'NewsCN.html', partnersLink: 'partners.html' },
+        'NewsEN.html': { home: 'Home', news: 'News', partners: 'Partners', lang: 'ENG', flag: 'https://flagcdn.com/w40/gb.png', contacts: 'Contacts', homeLink: 'EN.html', newsLink: 'NewsEN.html', contactsLink: 'EN.html#team2-u', rusPage: 'news.html', engPage: 'NewsEN.html', cnPage: 'NewsCN.html', partnersLink: 'partnersEN.html' },
+        'NewsCN.html': { home: '首页', news: '新闻', partners: '合作伙伴', lang: 'CN', flag: 'https://flagcdn.com/w40/cn.png', contacts: '联系方式', homeLink: 'page2.html', newsLink: 'NewsCN.html', contactsLink: 'page2.html#team2-u', rusPage: 'news.html', engPage: 'NewsEN.html', cnPage: 'NewsCN.html' },
+        'page1.html': { home: 'Главная', news: 'Новости', partners: 'Партнеры', lang: 'RUS', flag: 'https://flagcdn.com/w40/ru.png', contacts: 'Контакты', homeLink: 'index.html', newsLink: 'news.html', contactsLink: 'index.html#team2-u', rusPage: 'page1.html', engPage: 'page1.html', cnPage: 'page1.html' },
+        '': { home: 'Home', news: 'News', partners: 'Partners', lang: 'ENG', flag: 'https://flagcdn.com/w40/gb.png', contacts: 'Contacts', homeLink: 'EN.html', newsLink: 'NewsEN.html', contactsLink: 'EN.html#team2-u', rusPage: 'index.html', engPage: 'EN.html', cnPage: 'page2.html' }
+    };
+    var data = pageData[currentPage] || pageData['page2.html'];
+    
+    var navLinks = document.getElementById('nav-links');
+    var contactsBtn = document.getElementById('contacts-btn');
+    var logoLink = document.getElementById('logo-link');
+    
+    navLinks.innerHTML = 
+        '<li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="' + data.homeLink + '">' + data.home + '</a></li>' +
+        '<li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="' + data.newsLink + '">' + data.news + '</a></li>' +
+        '<li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="' + data.partnersLink + '">' + data.partners + '</a></li>' +
+        '<li class="nav-item dropdown" id="lang-dropdown">' +
+        '<a class="nav-link link text-white text-primary display-7 dropdown-toggle" href="#" data-bs-toggle="dropdown">' +
+        '<img src="' + data.flag + '" alt="' + data.lang + '" style="height: 14px; vertical-align: text-bottom; margin-right: 3px; width: auto; object-fit: contain;"> ' + data.lang +
+        '</a>' +
+        '<ul class="dropdown-menu dropdown-menu-dark">' +
+        '<li><a class="nav-link link text-white text-primary display-7" href="' + data.rusPage + '"><img src="https://flagcdn.com/w20/ru.png" alt="RUS" style="height: 10px; vertical-align: text-bottom; margin-right: 3px; width: auto;"> RUS</a></li>' +
+        '<li><a class="nav-link link text-white text-primary display-7" href="' + data.engPage + '"><img src="https://flagcdn.com/w20/gb.png" alt="ENG" style="height: 10px; vertical-align: text-bottom; margin-right: 3px; width: auto;"> ENG</a></li>' +
+        '<li><a class="nav-link link text-white text-primary display-7" href="' + data.cnPage + '"><img src="https://flagcdn.com/w20/cn.png" alt="CN" style="height: 10px; vertical-align: text-bottom; margin-right: 3px; width: auto;"> CN</a></li>' +
+        '</ul>' +
+        '</li>';
+    
+    if (logoLink) {
+      logoLink.href = data.homeLink;
+    }
+    
+    contactsBtn.innerHTML = '<span class="mobi-mbri mobi-mbri-mobile-2 mbr-iconfont mbr-iconfont-btn"></span>' + data.contacts;
+    contactsBtn.href = data.contactsLink;
+  });
+</script>
 
 <section data-bs-version="5.1" class="header6 cid-uBPwvigQ9b mbr-fullscreen mbr-parallax-background" id="header6-7">
 
