@@ -1,0 +1,230 @@
+/* ==========================================================================
+   BELATEKAVTO - 3D PDF Carousel & Magnifier Stylesheet
+   ========================================================================== */
+
+#pdf-viewer-section {
+  background: linear-gradient(180deg, #edf2f7 0%, #e2e8f0 100%);
+  padding: 4.5rem 0 4rem;
+  user-select: none;
+  overflow: hidden;
+  position: relative;
+}
+
+#pdf-viewer-section .mbr-section-title {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.container-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  height: 80vh;
+  min-height: 580px;
+  max-height: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+}
+
+/* Individual 3D card wrappers */
+.pdf-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #ffffff;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform-origin: center center;
+  overflow: hidden;
+  opacity: 0;
+  z-index: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+  pointer-events: none;
+}
+
+.pdf-card canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Card States */
+.pdf-card.is-active {
+  opacity: 1;
+  z-index: 20;
+  transform: translate(-50%, -50%) scale(1);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
+  cursor: crosshair;
+}
+
+.pdf-card.is-prev {
+  opacity: 0.55;
+  z-index: 10;
+  transform: translate(-135%, -50%) scale(0.65) rotateY(16deg);
+  filter: blur(1px) grayscale(25%);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.pdf-card.is-next {
+  opacity: 0.55;
+  z-index: 10;
+  transform: translate(35%, -50%) scale(0.65) rotateY(-16deg);
+  filter: blur(1px) grayscale(25%);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Text Layer for Selection */
+.textLayer {
+  opacity: 1;
+  mix-blend-mode: multiply;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.pdf-card.is-active .textLayer {
+  pointer-events: auto;
+  cursor: text;
+  user-select: text;
+}
+
+/* Carousel Navigation Buttons */
+.pdf-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #1e293b;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 100;
+}
+
+.pdf-nav-btn:hover {
+  background-color: #0284c7;
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.45);
+}
+
+.pdf-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.btn-prev { left: 24px; }
+.btn-next { right: 24px; }
+
+/* Magnifying Glass */
+.magnifier-lens {
+  position: absolute;
+  border: 3px solid #0284c7;
+  border-radius: 50%;
+  cursor: none;
+  width: 360px;
+  height: 360px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+  pointer-events: none;
+  z-index: 101;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  background-color: #ffffff;
+}
+
+.magnifier-lens #canvas-lens {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Page Counter & Download Link */
+.page-info {
+  margin-top: 1.5rem;
+  font-family: 'Jost', sans-serif;
+  color: #475569;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.pdf-download-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  color: #0284c7;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.pdf-download-link:hover {
+  background-color: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.3);
+}
+
+/* Fallback Card if PDF.js fails or is unavailable */
+.pdf-fallback-card {
+  display: none;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  max-width: 500px;
+  margin: 2rem auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.pdf-fallback-card.is-visible {
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .pdf-card.is-prev { transform: translate(-120%, -50%) scale(0.55); }
+  .pdf-card.is-next { transform: translate(20%, -50%) scale(0.55); }
+  .magnifier-lens { width: 300px; height: 300px; }
+}
+
+@media (max-width: 768px) {
+  #pdf-viewer-section { padding: 3rem 0; }
+  .container-carousel { height: 60vh; min-height: 420px; }
+  .pdf-nav-btn { width: 44px; height: 44px; font-size: 1.2rem; }
+  .btn-prev { left: 8px; }
+  .btn-next { right: 8px; }
+  /* On mobile hide side cards and magnifier to ensure smooth performance */
+  .pdf-card.is-prev,
+  .pdf-card.is-next {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  .magnifier-lens {
+    display: none !important;
+  }
+  .pdf-card.is-active {
+    cursor: default;
+  }
+}
+
